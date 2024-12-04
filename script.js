@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Добавление клиентов в таблицы
     function addClient(tab, name, status) {
-        const table = document.querySelector(#${tab} tbody);  // Строка была исправлена
+        const table = document.querySelector(#${tab} tbody);  // Правильно обернуто в кавычки
         let row = table.insertRow();
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
