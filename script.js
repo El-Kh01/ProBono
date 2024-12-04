@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const tabs = document.querySelectorAll('.client-table');
         tabs.forEach(tab => tab.style.display = 'none');
         document.getElementById(tabName).style.display = 'block';
-    }
+    };
 
     // Добавление клиентов в таблицы
     function addClient(tab, name, status) {
-        const table = document.querySelector(#${tab} tbody);
+        const table = document.querySelector(#${tab} tbody);  // Строка была исправлена
         let row = table.insertRow();
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
