@@ -1,48 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Clinic Client List</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
 <body>
-    <h1>Client List</h1>
-    
-    <!-- Блок для входа -->
-    <div id="auth-section">
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button id="login-button">Login</button>
-    </div>
-    
-    <!-- Таблица клиентов -->
-    <div id="table-section" style="display: none;">
-        <button id="logout-button">Logout</button>
+    <h1>Legal Clinic Client List</h1>
+
+    <!-- Форма авторизации -->
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Скрытый блок с таблицей -->
+    <div id="app-content" style="display: none;">
+        <h2>Client List</h2>
         <table id="clients-table">
             <thead>
                 <tr>
                     <th>Client Name</th>
                     <th>Status</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>John Doe</td>
                     <td>In Process</td>
-                    <td><button class="edit-button">Edit</button></td>
                 </tr>
                 <tr>
                     <td>Jane Smith</td>
                     <td>Completed</td>
-                    <td><button class="edit-button">Edit</button></td>
                 </tr>
             </tbody>
         </table>
-        <button id="add-client-button">Add New Client</button>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html>
