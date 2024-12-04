@@ -1,38 +1,88 @@
 <body>
-    <h1>Legal Clinic Client List</h1>
+    <h1>Список клиентов юридической клиники</h1>
 
     <!-- Форма авторизации -->
     <form id="login-form">
-        <label for="username">Username:</label>
+        <label for="username">Имя пользователя:</label>
         <input type="text" id="username" required>
         <br>
-        <label for="password">Password:</label>
+        <label for="password">Пароль:</label>
         <input type="password" id="password" required>
         <br>
-        <button type="submit">Login</button>
+        <button type="submit">Войти</button>
     </form>
 
-    <!-- Скрытый блок с таблицей -->
+    <!-- Скрытый блок с таблицами -->
     <div id="app-content" style="display: none;">
-        <h2>Client List</h2>
-        <table id="clients-table">
-            <thead>
-                <tr>
-                    <th>Client Name</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>John Doe</td>
-                    <td>In Process</td>
-                </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>Completed</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2>Список клиентов</h2>
+
+        <!-- Раздел "Поступившие" -->
+        <div id="new-clients">
+            <h3>Поступившие клиенты</h3>
+            <table id="new-clients-table">
+                <thead>
+                    <tr>
+                        <th>Имя клиента</th>
+                        <th>Статус</th>
+                        <th>Редактировать</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Джон Доу</td>
+                        <td>В процессе</td>
+                        <td><button class="edit-btn">Редактировать</button></td>
+                    </tr>
+                    <tr>
+                        <td>Джейн Смит</td>
+                        <td>Завершено</td>
+                        <td><button class="edit-btn">Редактировать</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Раздел "В процессе" -->
+        <div id="in-progress">
+            <h3>Клиенты в процессе</h3>
+            <table id="in-progress-table">
+                <thead>
+                    <tr>
+                        <th>Имя клиента</th>
+                        <th>Статус</th>
+                        <th>Редактировать</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Элис Грин</td>
+                        <td>В процессе</td>
+                        <td><button class="edit-btn">Редактировать</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Раздел "Завершенные" -->
+        <div id="completed">
+            <h3>Завершенные клиенты</h3>
+            <table id="completed-table">
+                <thead>
+                    <tr>
+                        <th>Имя клиента</th>
+                        <th>Статус</th>
+                        <th>Редактировать</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Майкл Браун</td>
+                        <td>Завершено</td>
+                        <td><button class="edit-btn">Редактировать</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="script.js"></script>
