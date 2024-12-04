@@ -1,17 +1,18 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('login-form');
     const appContent = document.getElementById('app-content');
-    
     const validUsername = 'admin';
     const validPassword = 'password123';
 
-    loginForm.addEventListener('submit', function (event) {
+    // Обработка отправки формы
+    loginForm.addEventListener('submit', function(event) {
         event.preventDefault();
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
         if (username === validUsername && password === validPassword) {
-            alert('Успешный вход!');
+            alert('Вход выполнен успешно!');
             loginForm.style.display = 'none';
             appContent.style.display = 'block';
         } else {
@@ -19,25 +20,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Функция для отображения вкладок
-    function showTab(tabId) {
-        const tabs = document.querySelectorAll('.tab-content');
+    // Функция для отображения нужной вкладки
+    window.showTab = function(tabName) {
+        const tabs = document.querySelectorAll('.client-table');
         tabs.forEach(tab => tab.style.display = 'none');
-        
-        const activeTab = document.getElementById(tabId);
-        activeTab.style.display = 'block';
+        document.getElementById(tabName).style.display = 'block';
     }
 
-    // Функция для сохранения редактирования в строке
-    function saveRow(button) {
-        const row = button.closest('tr');
-        const cells = row.querySelectorAll('td[contenteditable="true"]');
-        cells.forEach(cell => {
-            const updatedValue = cell.textContent;
-            console.log(Сохранено: ${updatedValue});
-        });
+    // Добавление клиентов в таблицы
+    function addClient(tab, name, status) {
+        const table = document.querySelector(#${tab} tbody);
+        let row = table.insertRow();
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        cell1.textContent = name;
+        cell2.textContent = status;
     }
 
-    // Пример: Показать вкладку "Поступившие"
-    showTab('incoming');
+    // Пример добавления клиентов
+    addClient('new', 'Иван Иванов', 'Поступил');
+    addClient('in-progress', 'Анна Смирнова', 'В процессе');
+    addClient('completed', 'Олег Петров', 'Завершено');
 });

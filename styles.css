@@ -1,76 +1,56 @@
-/* Основные стили */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+    margin: 20px;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
+h1, h2 {
+    color: #2C3E50;
 }
 
 form {
-    text-align: center;
     margin-bottom: 20px;
 }
 
-/* Стили для вкладок */
-.tabs {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.tab-btn {
-    padding: 10px 20px;
+input {
     margin: 5px;
-    border: 1px solid #ccc;
-    background-color: #f8f8f8;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.tab-btn:hover {
-    background-color: #ddd;
-}
-
-.tab-content {
-    display: none;
-}
-
-/* Стиль таблиц */
-.client-table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.client-table th, .client-table td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-.client-table td[contenteditable="true"]:hover {
-    background-color: #e6f7ff;
 }
 
 button {
     padding: 5px 10px;
-    background-color: #4CAF50;
+    cursor: pointer;
+    background-color: #3498DB;
     color: white;
     border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #2980B9;
 }
 
-form input {
-    padding: 8px;
+.tab-btn {
     margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+}
+
+.tab-btn:hover {
+    background-color: #C0392B;
+}
+
+.client-table {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }

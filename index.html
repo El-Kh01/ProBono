@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Clinic Client List</title>
+    <title>Список клиентов юридической клиники</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,69 +20,59 @@
         <button type="submit">Войти</button>
     </form>
 
-    <!-- Скрытый блок с таблицей -->
+    <!-- Скрытый блок с таблицами -->
     <div id="app-content" style="display: none;">
         <h2>Список клиентов</h2>
 
-        <div class="tabs">
-            <button class="tab-btn" onclick="showTab('incoming')">Поступившие</button>
-            <button class="tab-btn" onclick="showTab('in-process')">В процессе</button>
-            <button class="tab-btn" onclick="showTab('completed')">Завершенные</button>
+        <!-- Кнопки для переключения вкладок -->
+        <div>
+            <button class="tab-btn" onclick="showTab('new')">Поступившие</button>
+            <button class="tab-btn" onclick="showTab('in-progress')">В процессе</button>
+            <button class="tab-btn" onclick="showTab('completed')">Завершённые</button>
         </div>
 
-        <div id="incoming" class="tab-content">
-            <table class="client-table">
+        <!-- Таблицы клиентов -->
+        <div id="new" class="client-table" style="display: block;">
+            <h3>Поступившие</h3>
+            <table>
                 <thead>
                     <tr>
                         <th>Имя клиента</th>
                         <th>Статус</th>
-                        <th>Действия</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td contenteditable="true">Джон Доу</td>
-                        <td contenteditable="true">В процессе</td>
-                        <td><button onclick="saveRow(this)">Сохранить</button></td>
-                    </tr>
+                    <!-- Здесь будет список поступивших клиентов -->
                 </tbody>
             </table>
         </div>
 
-        <div id="in-process" class="tab-content" style="display: none;">
-            <table class="client-table">
+        <div id="in-progress" class="client-table" style="display: none;">
+            <h3>В процессе</h3>
+            <table>
                 <thead>
                     <tr>
                         <th>Имя клиента</th>
                         <th>Статус</th>
-                        <th>Действия</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td contenteditable="true">Джейн Смит</td>
-                        <td contenteditable="true">Завершено</td>
-                        <td><button onclick="saveRow(this)">Сохранить</button></td>
-                    </tr>
+                    <!-- Здесь будет список клиентов в процессе -->
                 </tbody>
             </table>
         </div>
 
-        <div id="completed" class="tab-content" style="display: none;">
-            <table class="client-table">
+        <div id="completed" class="client-table" style="display: none;">
+            <h3>Завершённые</h3>
+            <table>
                 <thead>
                     <tr>
                         <th>Имя клиента</th>
                         <th>Статус</th>
-                        <th>Действия</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td contenteditable="true">Марк Уиллс</td>
-                        <td contenteditable="true">Завершено</td>
-                        <td><button onclick="saveRow(this)">Сохранить</button></td>
-                    </tr>
+                    <!-- Здесь будет список завершённых клиентов -->
                 </tbody>
             </table>
         </div>
