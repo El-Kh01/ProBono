@@ -1,56 +1,57 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background-color: #f9f9f9;
 }
 
 h1, h2 {
-    color: #2C3E50;
+    color: #333;
 }
 
 form {
     margin-bottom: 20px;
 }
 
+label {
+    display: inline-block;
+    width: 100px;
+}
+
 input {
-    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
 }
 
 button {
-    padding: 5px 10px;
-    cursor: pointer;
-    background-color: #3498DB;
+    background-color: #007BFF;
     color: white;
     border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #2980B9;
+    background-color: #0056b3;
 }
 
 .tab-btn {
-    margin: 5px;
-    padding: 10px;
-    cursor: pointer;
-    background-color: #E74C3C;
-    color: white;
-    border: none;
-}
-
-.tab-btn:hover {
-    background-color: #C0392B;
-}
-
-.client-table {
-    margin-top: 20px;
+    margin-right: 10px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
 th, td {
-    padding: 10px;
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
 }
