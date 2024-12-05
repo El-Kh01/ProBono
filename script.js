@@ -45,21 +45,30 @@ async function loadTableData(tabId) {
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
             deleteButton.onclick = function() {
-                deleteRow(this, doc.id, tabId); // Удаление данных из Firestore
+                if (confirm("Вы уверены, что хотите удалить эту запись?")) {
+                    deleteRow(this, doc.id, tabId); // Удаление данных из Firestore
+                }
             };
             deleteCell.appendChild(deleteButton);
         });
     } catch (error) {
         console.error("Ошибка при загрузке данных из Firestore:", error);
+        alert("Произошла ошибка при загрузке данных.");
     }
 }
 
 // Обновление данных в Firestore при редактировании
 async function updateRowData(docId, tabId, field, value) {
-    const docRef = doc(db, tabId, docId);
-    await updateDoc(docRef, {
-        [field]: value
-    });
+    try {
+        const docRef = doc(db, tabId, docId);
+        await updateDoc(docRef, {
+            [field]: value
+        });
+        console.log("Данные обновлены в Firestore.");
+    } catch (error) {
+        console.error("Ошибка при обновлении данных в Firestore:", error);
+        alert("Произошла ошибка при обновлении данных.");
+    }
 }
 
 // Добавление новой строки в таблицу и в Firestore
@@ -93,7 +102,9 @@ async function addRow(tabId) {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Удалить';
     deleteButton.onclick = function() {
-        deleteRow(this, null, tabId); // Удаляем строку из таблицы, но не из Firestore, если не передан ID
+        if (confirm("Вы уверены, что хотите удалить эту запись?")) {
+            deleteRow(this, null, tabId); // Удаляем строку из таблицы, но не из Firestore, если не передан ID
+        }
     };
     deleteCell.appendChild(deleteButton);
     
@@ -103,6 +114,7 @@ async function addRow(tabId) {
         console.log("Документ добавлен с ID: ", docRef.id);
     } catch (error) {
         console.error("Ошибка добавления документа в Firestore:", error);
+        alert("Произошла ошибка при добавлении записи.");
     }
 }
 
@@ -119,6 +131,7 @@ async function deleteRow(button, docId, tabId) {
             console.log(`Документ с ID ${docId} удален`);
         } catch (error) {
             console.error("Ошибка при удалении документа:", error);
+            alert("Произошла ошибка при удалении записи.");
         }
     }
 }
