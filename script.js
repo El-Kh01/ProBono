@@ -64,81 +64,42 @@ async function updateRowData(docId, tabId, field, value) {
         await updateDoc(docRef, {
             [field]: value
         });
-        console.log("Данные обновлены в Firestore.");
     } catch (error) {
-        console.error("Ошибка при обновлении данных в Firestore:", error);
+        console.error("Ошибка при обновлении данных:", error);
         alert("Произошла ошибка при обновлении данных.");
     }
 }
 
-// Добавление новой строки в таблицу и в Firestore
-async function addRow(tabId) {
-    const table = document.getElementById(tabId + '-table').getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow();
-    
-    const rowData = {
-        "caseNumber": "",
-        "applicantName": "",
-        "applicantContact": "",
-        "arrivalDate": "",
-        "interviewDate": "",
-        "consultationDate": "",
-        "caseDescription": "",
-        "interns": "",
-        "curator": ""
-    };
-    
-    // Заполняем строку данными
-    Object.entries(rowData).forEach(([key, value], index) => {
+// Удаление строки из таблицы и из Firestore
+async function deleteRow(button, docId, tabId) {
+    try {
+        const docRef = doc(db, tabId, docId);
+        await deleteDoc(docRef);
+        button.closest('tr').remove(); // Удалить строку из таблицы
+    } catch (error) {
+        console.error("Ошибка при удалении данных:", error);
+        alert("Произошла ошибка при удалении данных.");
+    }
+}
+
+// Добавление новой записи в таблицу
+function addRow(tabId) {
+    const newRow = document.getElementById(tabId + '-table').getElementsByTagName('tbody')[0].insertRow();
+    const columns = ['№ дела', 'ФИО заявителя', 'Контакты заявителя', 'Дата поступления', 'Дата интервью', 'Дата консультации', 'Краткое описание дела', 'Стажеры', 'Куратор'];
+
+    columns.forEach(col => {
         const newCell = newRow.insertCell();
-        newCell.contentEditable = true; // Делать ячейки редактируемыми
+        newCell.contentEditable = true;
         newCell.addEventListener('input', () => {
-            rowData[key] = newCell.textContent; // Сохраняем данные в объект
+            updateRowData('new', tabId, col, newCell.textContent);
         });
     });
-    
-    // Добавление кнопки удаления
+
     const deleteCell = newRow.insertCell();
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Удалить';
     deleteButton.onclick = function() {
-        if (confirm("Вы уверены, что хотите удалить эту запись?")) {
-            deleteRow(this, null, tabId); // Удаляем строку из таблицы, но не из Firestore, если не передан ID
-        }
+        deleteRow(this, 'new', tabId);
     };
     deleteCell.appendChild(deleteButton);
-    
-    // Добавляем строку в коллекцию Firestore
-    try {
-        const docRef = await addDoc(collection(db, tabId), rowData);
-        console.log("Документ добавлен с ID: ", docRef.id);
-    } catch (error) {
-        console.error("Ошибка добавления документа в Firestore:", error);
-        alert("Произошла ошибка при добавлении записи.");
-    }
 }
-
-// Удаление строки из таблицы и Firestore
-async function deleteRow(button, docId, tabId) {
-    // Удаляем строку из таблицы
-    const row = button.parentElement.parentElement;
-    row.remove();
-    
-    // Удаляем данные из Firestore
-    if (docId) {
-        try {
-            await deleteDoc(doc(db, tabId, docId));
-            console.log(`Документ с ID ${docId} удален`);
-        } catch (error) {
-            console.error("Ошибка при удалении документа:", error);
-            alert("Произошла ошибка при удалении записи.");
-        }
-    }
-}
-
-// При загрузке страницы загружаем данные для всех вкладок
-document.addEventListener('DOMContentLoaded', function() {
-    loadTableData('new');
-    loadTableData('in-progress');
-    loadTableData('completed');
-});
